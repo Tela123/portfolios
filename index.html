@@ -4,142 +4,7 @@
 <script>document.documentElement.classList.add("js")</script>
 <title>Développeur web & Android · Designer print et codes-barres</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<style>
-:root{--blue:#1536c9;--ink:#0a1a5c;--sky:#dce6ff;--gold:#ffb627;--bg:#f6f8ff;--card:#fff;--text:#0f1b4d;--mute:#5b6694;--line:#d9e0f5;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081038;--card:#101a52;--text:#eef2ff;--mute:#a4b0e6;--line:#25327a;--sky:#1d2a75}}
-:root[data-theme="dark"]{--bg:#081038;--card:#101a52;--text:#eef2ff;--mute:#a4b0e6;--line:#25327a;--sky:#1d2a75}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-*,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
-h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0}
-button{font:inherit;cursor:pointer;border:0;color:inherit}
-:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-
-/* hero */
-.hero{background:var(--blue);color:#fff;padding:20px 0 64px;transition:background .4s}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:40px}
-.logo{font:800 1.4rem "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;color:#fff;text-decoration:none}
-.pill{display:flex;gap:4px;background:rgba(255,255,255,.14);border-radius:99px;padding:4px;overflow-x:auto;max-width:100%}
-.pill a{color:#fff;text-decoration:none;padding:8px 16px;border-radius:99px;font-weight:500;font-size:.92rem;white-space:nowrap}
-.pill a:hover{background:rgba(255,255,255,.18)}
-.cartbtn{background:#fff;color:var(--blue);border-radius:99px;padding:9px 16px;font-weight:700;white-space:nowrap}
-.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;letter-spacing:-.03em}
-.hero p{max-width:44ch;color:#dbe4ff;margin:18px 0 26px}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-.tab{background:rgba(255,255,255,.14);color:#fff;padding:8px 16px;border-radius:99px;font-weight:500}
-.tab[aria-pressed="true"]{background:#fff;color:var(--blue)}
-.cta{background:var(--gold);color:#241800;font-weight:700;padding:14px 24px;border-radius:99px}
-.cta:hover{filter:brightness(1.06)}
-.ghost{background:none;color:#fff;text-decoration:underline;padding:14px 12px}
-.stage{position:relative;aspect-ratio:1;max-width:420px;width:100%;margin:0 auto;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d5cf0,#0f2aa8)}
-.stage .big{font-size:clamp(7rem,22vw,11rem);line-height:1}
-.stage .big.pop{animation:pop .45s ease}
-@keyframes pop{from{transform:scale(.7) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
-.tag{position:absolute;right:-4px;bottom:12%;background:#fff;color:var(--ink);border-radius:18px;padding:10px 16px;box-shadow:0 10px 30px rgba(5,15,80,.35)}
-.tag b{display:block;font:700 1.05rem "Bricolage Grotesque",sans-serif}
-.tag span{font-size:.9rem;color:var(--blue);font-weight:700}
-
-/* catalogue */
-section{padding:64px 0}
-.sh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px}
-.sh h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em}
-.filters{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:var(--card);border:1px solid var(--line);padding:8px 16px;border-radius:99px;font-weight:500;color:var(--text)}
-.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
-.thumb{background:var(--sky);aspect-ratio:4/3;display:grid;place-items:center;font-size:4.6rem;position:relative}
-.badge{position:absolute;top:12px;left:12px;background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:99px}
-.info{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}
-.info h3{font-size:1.15rem;font-weight:700}
-.info small{color:var(--mute)}
-.buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
-.price{font-weight:700;color:var(--blue)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .price{color:#9db2ff}}
-.add{background:var(--blue);color:#fff;border-radius:99px;padding:8px 16px;font-weight:700}
-.add:hover{background:var(--ink)}
-
-/* atouts */
-.why{background:var(--ink);color:#fff}
-.why h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:32px;max-width:18ch}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
-.cols h3{font-size:1.25rem;margin-bottom:8px;color:var(--gold)}
-.cols p{margin:0;color:#c3cdf5}
-
-/* footer */
-footer{background:var(--blue);color:#fff;padding:56px 0 32px}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
-footer h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800}
-.nl{display:flex;gap:8px;margin-top:18px;max-width:440px}
-.nl input{flex:1;min-width:0;padding:13px 18px;border-radius:99px;border:0;font:inherit}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;color:#dbe4ff}
-.copy{margin-top:36px;color:#b9c6f8;font-size:.88rem}
-
-/* panier */
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--card);color:var(--text);transform:translateX(105%);transition:transform .3s;z-index:20;display:flex;flex-direction:column;padding:20px;padding-top:calc(20px + env(safe-area-inset-top,0px));padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));box-shadow:-10px 0 40px rgba(5,15,80,.3)}
-.drawer.open{transform:none}
-.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.dh h2{font-size:1.5rem}
-.x{background:var(--sky);width:38px;height:38px;border-radius:50%}
-.lines{flex:1;overflow:auto;display:grid;gap:10px;align-content:start}
-.line{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}
-.line .em{font-size:2rem}
-.qty{display:flex;align-items:center;gap:8px}
-.qty button{background:var(--sky);width:28px;height:28px;border-radius:50%;font-weight:700}
-.empty{color:var(--mute);padding:24px 0}
-.total{display:flex;justify-content:space-between;font:700 1.2rem "Bricolage Grotesque",sans-serif;padding:14px 0}
-.order{width:100%;background:var(--blue);color:#fff;border-radius:99px;padding:14px;font-weight:700}
-.veil{position:fixed;inset:0;background:rgba(5,10,40,.5);z-index:10;opacity:0;pointer-events:none;transition:opacity .3s}
-.veil.on{opacity:1;pointer-events:auto}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:99px;opacity:0;transition:.3s;z-index:30;pointer-events:none}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-
-@media (max-width:760px){.hgrid,.fgrid{grid-template-columns:1fr}.stage{max-width:300px}.nav{flex-wrap:wrap}.pill{order:3;width:100%}.tag{right:0}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-/* ===== animations (inspirées de la vidéo) ===== */
-body{animation:pin .55s ease both;transition:opacity .22s}
-body.leaving{opacity:0}
-@keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-#bar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;z-index:50}
-.it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
-.hero{position:relative;overflow:hidden;background:var(--hb,#1536c9);transition:background-color .9s ease}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 68% 45%,rgba(255,255,255,.2),transparent 60%),radial-gradient(ellipse at 0 100%,rgba(0,0,0,.28),transparent 55%)}
-.hero .wrap{position:relative}
-.stage{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.3),rgba(0,0,0,.2))}
-.big{transition:opacity .4s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .4s ease;animation:float 5s ease-in-out infinite}
-.big.out{opacity:0;transform:scale(.78) translateY(24px);filter:blur(12px)}
-@keyframes float{50%{translate:0 -10px}}
-.arrows{display:inline-flex;gap:8px;margin-left:12px;vertical-align:middle}
-.arr{background:rgba(255,255,255,.16);color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.1rem;transition:background .2s}
-.arr:hover{background:rgba(255,255,255,.3)}
-.next{position:absolute;right:2%;bottom:0;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);font-size:2rem;transition:transform .25s,background .25s}
-.next:hover{transform:scale(1.12);background:rgba(255,255,255,.3)}
-.marq{background:#fff;color:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;font:700 1rem "Bricolage Grotesque",sans-serif}
-.marq div{display:inline-block;animation:marq 30s linear infinite}
-.marq span{margin:0 22px}.marq i{color:var(--blue);font-style:normal}
-@keyframes marq{to{transform:translateX(-50%)}}
-.js [data-r]{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
-.js [data-r].in{opacity:1;transform:none}
-.card{transition:border-color .3s,box-shadow .3s}.card:hover{border-color:var(--blue);box-shadow:0 18px 40px rgba(21,54,201,.22)}
-.thumb .e{display:inline-block;transition:transform .45s cubic-bezier(.2,.8,.2,1)}.card:hover .thumb .e{transform:scale(1.14) rotate(-5deg)}
-.cta,.add,.btn{transition:transform .2s,filter .2s,background .2s}.cta:hover,.btn:hover{transform:translateY(-2px)}
-.giant{font:800 clamp(4rem,23vw,17rem)/.8 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35);margin-top:32px;user-select:none}
-@media (prefers-reduced-motion:reduce){.big,.marq div,body{animation:none!important}.js [data-r]{opacity:1;transform:none}}
-
-.drawer input{padding:11px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;margin-top:8px;width:100%}
-
-a.cta{display:inline-block;text-decoration:none}
-.demo{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
-.demo svg{width:100%;height:auto;background:#fff;border-radius:14px;display:block}
-.f{display:grid;gap:12px}.f input,.f select,.f textarea{padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;width:100%}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.cgrid ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px;color:var(--mute)}
-.hint{color:var(--mute);font-size:.9rem;margin:8px 0 0}
-@media (max-width:760px){.demo,.cgrid{grid-template-columns:1fr}}
-</style></head>
+<style>:root{--blue:#1536c9;--ink:#0a1a5c;--sky:#dce6ff;--gold:#ffb627;--bg:#f6f8ff;--card:#fff;--text:#0f1b4d;--mute:#5b6694;--line:#d9e0f5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081038;--card:#101a52;--text:#eef2ff;--mute:#a4b0e6;--line:#25327a;--sky:#1d2a75}}:root[data-theme="dark"]{--bg:#081038;--card:#101a52;--text:#eef2ff;--mute:#a4b0e6;--line:#25327a;--sky:#1d2a75}html{scroll-behavior:smooth;scroll-padding-top:90px}*,*::before,*::after{box-sizing:inherit}body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0}button{font:inherit;cursor:pointer;border:0;color:inherit}:focus-visible{outline:3px solid var(--gold);outline-offset:2px}.wrap{max-width:1120px;margin:0 auto;padding:0 20px}.hero{background:var(--blue);color:#fff;padding:20px 0 64px;transition:background .4s}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:40px}.logo{font:800 1.4rem "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;color:#fff;text-decoration:none}.pill{display:flex;gap:4px;background:rgba(255,255,255,.14);border-radius:99px;padding:4px;overflow-x:auto;max-width:100%}.pill a{color:#fff;text-decoration:none;padding:8px 16px;border-radius:99px;font-weight:500;font-size:.92rem;white-space:nowrap}.pill a:hover{background:rgba(255,255,255,.18)}.cartbtn{background:#fff;color:var(--blue);border-radius:99px;padding:9px 16px;font-weight:700;white-space:nowrap}.hgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;letter-spacing:-.03em}.hero p{max-width:44ch;color:#dbe4ff;margin:18px 0 26px}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}.tab{background:rgba(255,255,255,.14);color:#fff;padding:8px 16px;border-radius:99px;font-weight:500}.tab[aria-pressed="true"]{background:#fff;color:var(--blue)}.cta{background:var(--gold);color:#241800;font-weight:700;padding:14px 24px;border-radius:99px}.cta:hover{filter:brightness(1.06)}.ghost{background:none;color:#fff;text-decoration:underline;padding:14px 12px}.stage{position:relative;aspect-ratio:1;max-width:420px;width:100%;margin:0 auto;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d5cf0,#0f2aa8)}.stage .big{font-size:clamp(7rem,22vw,11rem);line-height:1}.tag{position:absolute;right:-4px;bottom:12%;background:#fff;color:var(--ink);border-radius:18px;padding:10px 16px;box-shadow:0 10px 30px rgba(5,15,80,.35)}.tag b{display:block;font:700 1.05rem "Bricolage Grotesque",sans-serif}.tag span{font-size:.9rem;color:var(--blue);font-weight:700}section{padding:64px 0}.sh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px}.sh h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em}.filters{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--card);border:1px solid var(--line);padding:8px 16px;border-radius:99px;font-weight:500;color:var(--text)}.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}.thumb{background:var(--sky);aspect-ratio:4/3;display:grid;place-items:center;font-size:4.6rem;position:relative}.badge{position:absolute;top:12px;left:12px;background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:99px}.info{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}.info h3{font-size:1.15rem;font-weight:700}.info small{color:var(--mute)}.buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}.price{font-weight:700;color:var(--blue)}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .price{color:#9db2ff}}.why{background:var(--ink);color:#fff}.why h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:32px;max-width:18ch}.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}.cols h3{font-size:1.25rem;margin-bottom:8px;color:var(--gold)}.cols p{margin:0;color:#c3cdf5}footer{background:var(--blue);color:#fff;padding:56px 0 32px}.copy{margin-top:36px;color:#b9c6f8;font-size:.88rem}.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:99px;opacity:0;transition:.3s;z-index:30;pointer-events:none}.toast.on{opacity:1;transform:translate(-50%,0)}@media (max-width:760px){.hgrid,.fgrid{grid-template-columns:1fr}.stage{max-width:300px}.nav{flex-wrap:wrap}.pill{order:3;width:100%}.tag{right:0}}@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}body{animation:pin .55s ease both;transition:opacity .22s}@keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}#bar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:0 50%;z-index:50}.it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}.hero{position:relative;overflow:hidden;background:var(--hb,#1536c9);transition:background-color .9s ease}.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 68% 45%,rgba(255,255,255,.2),transparent 60%),radial-gradient(ellipse at 0 100%,rgba(0,0,0,.28),transparent 55%)}.hero .wrap{position:relative}.stage{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.3),rgba(0,0,0,.2))}.big{transition:opacity .4s ease,transform .6s cubic-bezier(.2,.8,.2,1),filter .4s ease;animation:float 5s ease-in-out infinite}.big.out{opacity:0;transform:scale(.78) translateY(24px);filter:blur(12px)}@keyframes float{50%{translate:0 -10px}}.arrows{display:inline-flex;gap:8px;margin-left:12px;vertical-align:middle}.arr{background:rgba(255,255,255,.16);color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.1rem;transition:background .2s}.arr:hover{background:rgba(255,255,255,.3)}.next{position:absolute;right:2%;bottom:0;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);font-size:2rem;transition:transform .25s,background .25s}.next:hover{transform:scale(1.12);background:rgba(255,255,255,.3)}.marq{background:#fff;color:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;font:700 1rem "Bricolage Grotesque",sans-serif}.marq div{display:inline-block;animation:marq 30s linear infinite}.marq span{margin:0 22px}.marq i{color:var(--blue);font-style:normal}@keyframes marq{to{transform:translateX(-50%)}}.js [data-r]{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}.js [data-r].in{opacity:1;transform:none}.card{transition:border-color .3s,box-shadow .3s}.card:hover{border-color:var(--blue);box-shadow:0 18px 40px rgba(21,54,201,.22)}.thumb .e{display:inline-block;transition:transform .45s cubic-bezier(.2,.8,.2,1)}.card:hover .thumb .e{transform:scale(1.14) rotate(-5deg)}.cta,.add,.btn{transition:transform .2s,filter .2s,background .2s}.cta:hover,.btn:hover{transform:translateY(-2px)}.giant{font:800 clamp(4rem,23vw,17rem)/.8 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35);margin-top:32px;user-select:none}@media (prefers-reduced-motion:reduce){.big,.marq div,body{animation:none!important}.js [data-r]{opacity:1;transform:none}}a.cta{display:inline-block;text-decoration:none}.demo{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.demo svg{width:100%;height:auto;background:#fff;border-radius:14px;display:block}.f{display:grid;gap:12px}.f input,.f select,.f textarea{padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;width:100%}.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}.cgrid ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px;color:var(--mute)}.hint{color:var(--mute);font-size:.9rem;margin:8px 0 0}@media (max-width:760px){.demo,.cgrid{grid-template-columns:1fr}}</style></head>
 <body>
 <div id="bar"></div>
 <header class="hero" id="hero"><div class="wrap">
@@ -163,7 +28,6 @@ a.cta{display:inline-block;text-decoration:none}
 <section id="competences"><div class="wrap">
 <div class="sh"><h2 data-r>Mes <span class="it">compétences.</span></h2><div class="filters" id="filters" role="group" aria-label="Filtrer"></div></div>
 <div class="grid" id="grid"></div></div></section>
-
 <section id="demo"><div class="wrap">
 <div class="sh"><h2 data-r>Essayez, <span class="it">c'est vivant.</span></h2></div>
 <div class="demo" data-r>
@@ -172,7 +36,6 @@ a.cta{display:inline-block;text-decoration:none}
 <div class="f" style="margin-top:12px"><input id="ean" inputmode="numeric" maxlength="13" value="612345678901" aria-label="12 chiffres"></div>
 <p class="hint" id="eanMsg"></p></div>
 <div id="eanOut" aria-live="polite"></div></div></div></section>
-
 <section class="why" id="process"><div class="wrap">
 <h2 data-r>Simple, rapide, <span class="it">sur mesure.</span></h2>
 <div class="cols">
@@ -180,11 +43,9 @@ a.cta{display:inline-block;text-decoration:none}
 <div data-r><h3>2. Je crée</h3><p>Maquettes, code, visuels : vous validez chaque étape avant de passer à la suivante.</p></div>
 <div data-r><h3>3. Je livre</h3><p>Fichiers prêts à imprimer, site en ligne ou application installable, avec une prise en main.</p></div>
 </div></div></section>
-
 <section id="realisations"><div class="wrap">
 <div class="sh"><h2 data-r>Réalisations <span class="it">choisies.</span></h2></div>
 <div class="grid" id="works"></div></div></section>
-
 <section id="contact"><div class="wrap"><div class="cgrid">
 <div data-r><h2 style="font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em">Parlons de <span class="it">votre projet.</span></h2>
 <p style="color:var(--mute)">Décrivez votre besoin : je réponds rapidement avec un devis.</p>
@@ -202,83 +63,71 @@ a.cta{display:inline-block;text-decoration:none}
 <script>
 // À personnaliser
 const NAME="Votre Nom", WA="237600000000", EMAIL="vous@exemple.com";
-
 const SL=[
- {n:"Développement web",s:"Sites, e-commerce, applications",e:"💻",bg:"#1536c9",t:"Web"},
- {n:"Applications Android",s:"Des apps mobiles pour vos clients",e:"📱",bg:"#1e6bff",t:"Android"},
- {n:"Design & impression",s:"Cartes, affiches, flyers, étiquettes",e:"🎨",bg:"#0a1a5c",t:"Design"},
- {n:"Codes-barres & QR",s:"EAN-13, QR codes, étiquettes",e:"🔳",bg:"#c97a00",t:"Codes-barres"}];
+{n:"Développement web",s:"Sites, e-commerce, applications",e:"💻",bg:"#1536c9",t:"Web"},
+{n:"Applications Android",s:"Des apps mobiles pour vos clients",e:"📱",bg:"#1e6bff",t:"Android"},
+{n:"Design & impression",s:"Cartes, affiches, flyers, étiquettes",e:"🎨",bg:"#0a1a5c",t:"Design"},
+{n:"Codes-barres & QR",s:"EAN-13, QR codes, étiquettes",e:"🔳",bg:"#c97a00",t:"Codes-barres"}];
 const CATS=["Développement","Design","Codes-barres & QR"];
 const S=[
- {c:0,e:"🌐",n:"Sites web",d:"Sites vitrines et e-commerce rapides, adaptés au mobile.",g:"HTML · CSS · JavaScript · PHP · MySQL",b:"Populaire"},
- {c:0,e:"📱",n:"Applications Android",d:"Applications mobiles sur mesure, de l'idée à la publication.",g:"Android · Interface · Publication"},
- {c:0,e:"🧩",n:"Applications de gestion",d:"Tableaux de bord, stocks, factures, comptes utilisateurs.",g:"Web · Base de données · Sécurité",b:"Sur mesure"},
- {c:1,e:"🪪",n:"Cartes de visite",d:"Recto-verso élégants, prêts pour l'imprimeur.",g:"Print · PDF · Fichiers sources"},
- {c:1,e:"📣",n:"Affiches publicitaires",d:"Affiches qui se remarquent, tous formats, de l'A4 au grand format.",g:"Affiche · Publicité · Impression",b:"Populaire"},
- {c:1,e:"📄",n:"Flyers & dépliants",d:"Supports clairs pour promouvoir vos offres et événements.",g:"Flyer · Dépliant · Menu"},
- {c:1,e:"✨",n:"Logos & identité visuelle",d:"Un logo, des couleurs et une signature cohérents.",g:"Logo · Charte · Animation"},
- {c:2,e:"🔢",n:"Codes-barres EAN-13",d:"Génération et impression de codes-barres conformes pour vos produits.",g:"EAN-13 · Planches · Impression",b:"Spécialité"},
- {c:2,e:"🔳",n:"QR codes",d:"Liens, WhatsApp, menus, paiements : des QR codes fiables et stylés.",g:"QR · Lien · WhatsApp"},
- {c:2,e:"🏷️",n:"Étiquettes produits",d:"Étiquettes avec code-barres, prix et logo, prêtes à imprimer.",g:"Étiquette · Packaging · Code-barres"}];
+{c:0,e:"🌐",n:"Sites web",d:"Sites vitrines et e-commerce rapides, adaptés au mobile.",g:"HTML · CSS · JavaScript · PHP · MySQL",b:"Populaire"},
+{c:0,e:"📱",n:"Applications Android",d:"Applications mobiles sur mesure, de l'idée à la publication.",g:"Android · Interface · Publication"},
+{c:0,e:"🧩",n:"Applications de gestion",d:"Tableaux de bord, stocks, factures, comptes utilisateurs.",g:"Web · Base de données · Sécurité",b:"Sur mesure"},
+{c:1,e:"🪪",n:"Cartes de visite",d:"Recto-verso élégants, prêts pour l'imprimeur.",g:"Print · PDF · Fichiers sources"},
+{c:1,e:"📣",n:"Affiches publicitaires",d:"Affiches qui se remarquent, tous formats, de l'A4 au grand format.",g:"Affiche · Publicité · Impression",b:"Populaire"},
+{c:1,e:"📄",n:"Flyers & dépliants",d:"Supports clairs pour promouvoir vos offres et événements.",g:"Flyer · Dépliant · Menu"},
+{c:1,e:"✨",n:"Logos & identité visuelle",d:"Un logo, des couleurs et une signature cohérents.",g:"Logo · Charte · Animation"},
+{c:2,e:"🔢",n:"Codes-barres EAN-13",d:"Génération et impression de codes-barres conformes pour vos produits.",g:"EAN-13 · Planches · Impression",b:"Spécialité"},
+{c:2,e:"🔳",n:"QR codes",d:"Liens, WhatsApp, menus, paiements : des QR codes fiables et stylés.",g:"QR · Lien · WhatsApp"},
+{c:2,e:"🏷️",n:"Étiquettes produits",d:"Étiquettes avec code-barres, prix et logo, prêtes à imprimer.",g:"Étiquette · Packaging · Code-barres"}];
 const R=[
- {e:"🔢",n:"Gestion de codes-barres EAN-13",d:"Application de génération, gestion et impression de codes-barres pour commerçants.",g:"PHP · MySQL"},
- {e:"🏫",n:"Gestion scolaire",d:"ERP éducatif de la maternelle au lycée : profils, évaluations, base de données.",g:"Application web"},
- {e:"📊",n:"Tableau de bord d'entreprise",d:"RH, stock, ventes, factures et clients réunis dans une seule application.",g:"React"},
- {e:"📋",n:"Plateforme de sondages",d:"Création et publication de sondages pour entreprises abonnées.",g:"SaaS"},
- {e:"🛒",n:"Site de supermarché",d:"Vitrine e-commerce avec panneau d'administration et codes-barres.",g:"PHP · MySQL"},
- {e:"🎞️",n:"Logo animé",d:"Identité animée pour une chaîne d'animation, exportée en GIF.",g:"Animation"}];
-
+{e:"🔢",n:"Gestion de codes-barres EAN-13",d:"Application de génération, gestion et impression de codes-barres pour commerçants.",g:"PHP · MySQL"},
+{e:"🏫",n:"Gestion scolaire",d:"ERP éducatif de la maternelle au lycée : profils, évaluations, base de données.",g:"Application web"},
+{e:"📊",n:"Tableau de bord d'entreprise",d:"RH, stock, ventes, factures et clients réunis dans une seule application.",g:"React"},
+{e:"📋",n:"Plateforme de sondages",d:"Création et publication de sondages pour entreprises abonnées.",g:"SaaS"},
+{e:"🛒",n:"Site de supermarché",d:"Vitrine e-commerce avec panneau d'administration et codes-barres.",g:"PHP · MySQL"},
+{e:"🎞️",n:"Logo animé",d:"Identité animée pour une chaîne d'animation, exportée en GIF.",g:"Animation"}];
 const $=s=>document.querySelector(s), rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let i=0, filter=-1, st, tm;
 function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2200)}
-
-// Hero
 function renderTabs(){$("#tabs").innerHTML=SL.map((x,k)=>`<button class="tab" aria-pressed="${k===i}" data-k="${k}">${x.t}</button>`).join("")}
 function renderHero(){
-  const e=$("#heroEmoji"),s=SL[i],nx=SL[(i+1)%SL.length];
-  $("#hero").style.setProperty("--hb",s.bg);e.classList.add("out");clearTimeout(st);
-  st=setTimeout(()=>{e.textContent=s.e;$("#heroName").textContent=s.n;$("#heroSub").textContent=s.s;$("#nextBtn").textContent=nx.e;e.classList.remove("out")},rm?0:380);
+const e=$("#heroEmoji"),s=SL[i],nx=SL[(i+1)%SL.length];
+$("#hero").style.setProperty("--hb",s.bg);e.classList.add("out");clearTimeout(st);
+st=setTimeout(()=>{e.textContent=s.e;$("#heroName").textContent=s.n;$("#heroSub").textContent=s.s;$("#nextBtn").textContent=nx.e;e.classList.remove("out")},rm?0:380);
 }
 function go(n){i=(n+SL.length)%SL.length;renderTabs();renderHero();loop()}
 function loop(){clearInterval(tm);if(!rm)tm=setInterval(()=>go(i+1),5200)}
-
-// Compétences & réalisations
 function renderFilters(){$("#filters").innerHTML=["Tout",...CATS].map((c,k)=>`<button class="chip" aria-pressed="${filter===k-1}" data-f="${k-1}">${c}</button>`).join("")}
 function card(x,tag){return `<article class="card" data-r><div class="thumb" aria-hidden="true">${x.b?`<span class="badge">${x.b}</span>`:""}<span class="e">${x.e}</span></div><div class="info"><h3>${x.n}</h3><small>${x.d}</small><div class="buy"><span class="price" style="font-size:.85rem">${x.g}</span></div></div></article>`}
 function renderGrid(){$("#grid").innerHTML=S.filter(x=>filter<0||x.c===filter).map(card).join("")}
-
-// Apparition au défilement + barre de progression
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15,rootMargin:"0px 0px -40px 0px"});
 function reveal(){document.querySelectorAll("[data-r]:not(.in)").forEach(el=>{el.style.setProperty("--d",Math.min([...el.parentNode.children].indexOf(el),5)*.09+"s");io.observe(el)})}
 let tk=0;addEventListener("scroll",()=>{if(tk)return;tk=requestAnimationFrame(()=>{tk=0;const h=document.documentElement.scrollHeight-innerHeight;$("#bar").style.transform="scaleX("+(h>0?scrollY/h:0)+")"})},{passive:true});
-
-// Générateur EAN-13
 const L=["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"],
 PAR=["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"];
 const flip=c=>[...c].map(b=>b^1).join(""), G=c=>[...flip(c)].reverse().join("");
 function ean(){
-  const v=$("#ean").value.replace(/\D/g,"").slice(0,13);
-  if(v.length<12){$("#eanOut").innerHTML="";$("#eanMsg").textContent="Saisissez 12 chiffres ("+v.length+"/12).";return}
-  let s=0;for(let k=0;k<12;k++)s+=+v[k]*(k%2?3:1);
-  const key=(10-s%10)%10,d=v.slice(0,12)+key,par=PAR[+d[0]];
-  let bits="101";for(let k=1;k<7;k++)bits+=par[k-1]==="L"?L[+d[k]]:G(L[+d[k]]);
-  bits+="01010";for(let k=7;k<13;k++)bits+=flip(L[+d[k]]);bits+="101";
-  let bars="";[...bits].forEach((b,k)=>{if(b==="1")bars+=`<rect x="${9+k}" y="4" width="1" height="50" fill="#000"/>`});
-  let txt=`<text x="4" y="65" font-size="8" font-family="monospace" fill="#000">${d[0]}</text>`;
-  for(let k=1;k<13;k++)txt+=`<text x="${(k<7?9+3+7*(k-1):9+50+7*(k-7))+3.5}" y="65" font-size="8" text-anchor="middle" font-family="monospace" fill="#000">${d[k]}</text>`;
-  $("#eanOut").innerHTML=`<svg viewBox="0 0 113 72" role="img" aria-label="Code-barres EAN-13 ${d}">${bars}${txt}</svg>`;
-  $("#eanMsg").textContent="Clé de contrôle : "+key+" → code complet "+d;
+const v=$("#ean").value.replace(/\D/g,"").slice(0,13);
+if(v.length<12){$("#eanOut").innerHTML="";$("#eanMsg").textContent="Saisissez 12 chiffres ("+v.length+"/12).";return}
+let s=0;for(let k=0;k<12;k++)s+=+v[k]*(k%2?3:1);
+const key=(10-s%10)%10,d=v.slice(0,12)+key,par=PAR[+d[0]];
+let bits="101";for(let k=1;k<7;k++)bits+=par[k-1]==="L"?L[+d[k]]:G(L[+d[k]]);
+bits+="01010";for(let k=7;k<13;k++)bits+=flip(L[+d[k]]);bits+="101";
+let bars="";[...bits].forEach((b,k)=>{if(b==="1")bars+=`<rect x="${9+k}" y="4" width="1" height="50" fill="#000"/>`});
+let txt=`<text x="4" y="65" font-size="8" font-family="monospace" fill="#000">${d[0]}</text>`;
+for(let k=1;k<13;k++)txt+=`<text x="${(k<7?9+3+7*(k-1):9+50+7*(k-7))+3.5}" y="65" font-size="8" text-anchor="middle" font-family="monospace" fill="#000">${d[k]}</text>`;
+$("#eanOut").innerHTML=`<svg viewBox="0 0 113 72" role="img" aria-label="Code-barres EAN-13 ${d}">${bars}${txt}</svg>`;
+$("#eanMsg").textContent="Clé de contrôle : "+key+" → code complet "+d;
 }
-
 document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
-  if(t.dataset.k)go(+t.dataset.k);else if(t.dataset.dir)go(i+ +t.dataset.dir);
-  else if(t.dataset.f){filter=+t.dataset.f;renderFilters();renderGrid();reveal()}});
+if(t.dataset.k)go(+t.dataset.k);else if(t.dataset.dir)go(i+ +t.dataset.dir);
+else if(t.dataset.f){filter=+t.dataset.f;renderFilters();renderGrid();reveal()}});
 $("#nextBtn").onclick=()=>go(i+1);
 $("#ean").oninput=ean;
 $("#cf").onsubmit=e=>{e.preventDefault();
-  const m="Bonjour "+NAME+", je suis "+$("#fn").value.trim()+".\nBesoin : "+$("#fb").value+"\n"+$("#fm").value.trim();
-  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener");toast("Message prêt dans WhatsApp")};
-
+const m="Bonjour "+NAME+", je suis "+$("#fn").value.trim()+".\nBesoin : "+$("#fb").value+"\n"+$("#fm").value.trim();
+window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener");toast("Message prêt dans WhatsApp")};
 document.querySelectorAll("[data-name]").forEach(e=>e.textContent=NAME);
 document.querySelector("[data-giant]").textContent=NAME.toUpperCase();
 $("#mail").textContent=EMAIL;
